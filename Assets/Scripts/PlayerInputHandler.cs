@@ -3,7 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    // This is the default input system asset.
     private PlayerInputActions _controls;
+    
+    
     private Vector2 _moveInput;
     private bool _isJumping;
     private bool _isThrowing;
