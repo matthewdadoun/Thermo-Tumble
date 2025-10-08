@@ -531,76 +531,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1449796773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4748130174166086742, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
-  m_PrefabInstance: {fileID: 4413242931262761690}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1449796781 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1431672807105644273, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
-  m_PrefabInstance: {fileID: 4413242931262761690}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449796773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7558f4bfd6780274e94881acfa177b3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
---- !u!114 &1449796784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449796773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: f60c859694a766047a2b8a881842f226, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5b5b71d5-85f2-47ef-aece-3f39106f6664
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1449796781}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 22ddaaf8-1ecd-4be7-b8df-ad66ec2f2af3
-    m_ActionName: 'Player/Jump[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7081028d-c6b4-44f4-ae27-b26f8740e1e2
-    m_ActionName: 'Player/Pick Up / Throw[/Keyboard/k]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1502119120
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +543,7 @@ GameObject:
   - component: {fileID: 1502119123}
   - component: {fileID: 1502119122}
   - component: {fileID: 1502119121}
+  - component: {fileID: 1502119125}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -705,7 +636,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -738,66 +669,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1532815326 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 653454069561089921, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
-  m_PrefabInstance: {fileID: 4413242931262761690}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1706678003
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1706678004}
-  m_Layer: 0
-  m_Name: CameraTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1706678004
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706678003}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1532815326}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2075021468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2075021470}
-  - component: {fileID: 2075021469}
-  m_Layer: 0
-  m_Name: CinemachineBrain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2075021469
+--- !u!114 &1502119125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075021468}
+  m_GameObject: {fileID: 1502119120}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
@@ -823,21 +701,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!4 &2075021470
+--- !u!4 &1706678004 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 179916009427961459, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
+  m_PrefabInstance: {fileID: 4413242931262761690}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075021468}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.000000026478064, y: 0.00000015835772, z: 4.193006e-15, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4413242931262761690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -896,14 +764,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 653454069561089921, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1706678004}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4748130174166086742, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1449796784}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dad659b53c8ed344998aae667fafed0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -914,5 +776,4 @@ SceneRoots:
   - {fileID: 4413242931262761690}
   - {fileID: 1106392564}
   - {fileID: 347270429}
-  - {fileID: 2075021470}
   - {fileID: 1502119124}
