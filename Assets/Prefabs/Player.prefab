@@ -245,11 +245,11 @@ MonoBehaviour:
     m_Bits: 4294967295
   moveSpeed: 8
   accel: 60
-  jumpVelocity: 12
-  jumpCutMultiplier: 0.5
-  extraFallGravity: 25
+  jumpVelocity: 8
+  jumpCutMultiplier: 0.95
+  extraFallGravity: 35
   coyoteTime: 0.12
-  jumpBuffer: 0.12
+  jumpBuffer: 0.05
 --- !u!54 &6348031811540437422
 Rigidbody:
   m_ObjectHideFlags: 0
