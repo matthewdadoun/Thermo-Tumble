@@ -9,6 +9,7 @@ public class PickUpObject : MonoBehaviour, IGrabbable
 {
     // The rigid body of this object
     private Rigidbody _rb;
+    private Collider _col;
 
     // The force amount to apply when throwing the object
     [SerializeField] private float throwForce = 100f;
@@ -16,6 +17,7 @@ public class PickUpObject : MonoBehaviour, IGrabbable
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _col = GetComponent<Collider>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,16 +32,30 @@ public class PickUpObject : MonoBehaviour, IGrabbable
 
     public void OnGrab(Transform holder)
     {
+        // Set rigid body to be kinematic and disable gravity
         _rb.isKinematic = true;
-        holder.SetParent(holder, worldPositionStays: false);
+        _rb.useGravity = false;
+
+        // set collision enabled to be false
+        _col.enabled = false;
+        
+        // Set transform parent to be the holder
+        transform.SetParent(holder, worldPositionStays: false);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-        gameObject.layer = LayerMask.NameToLayer($"HeldItem");
+        /*gameObject.layer = LayerMask.NameToLayer($"HeldItem");*/
     }
 
     public void OnThrow(Vector3 throwDirection)
     {
+        // Set rigid body to be kinematic and disable gravity
+        _rb.isKinematic = false;
+        _rb.useGravity = true;
+
+        // set collision enabled to be false
+        _col.enabled = true;
+        
         transform.SetParent(null, true);
-        _rb.AddForce(throwDirection * throwForce);
+        _rb.AddForce((throwDirection + Vector3.up) * throwForce);
     }
 }
