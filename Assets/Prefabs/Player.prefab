@@ -148,6 +148,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 179916009427961459}
+  - {fileID: 2887065783742335522}
   m_Father: {fileID: 653454069561089921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7850675976255960312
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7558f4bfd6780274e94881acfa177b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
-  extraHeight: 0.05
+  extraTraceLen: 0.05
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -250,6 +251,7 @@ MonoBehaviour:
   extraFallGravity: 35
   coyoteTime: 0.12
   jumpBuffer: 0.05
+  holdPoint: {fileID: 6242768911082211762}
 --- !u!54 &6348031811540437422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -323,7 +325,19 @@ MonoBehaviour:
     m_ActionId: 22ddaaf8-1ecd-4be7-b8df-ad66ec2f2af3
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1431672807105644273}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7081028d-c6b4-44f4-ae27-b26f8740e1e2
     m_ActionName: 'Player/Pick Up / Throw[/Keyboard/k]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -331,3 +345,34 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &6242768911082211762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2887065783742335522}
+  m_Layer: 0
+  m_Name: GrabHoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2887065783742335522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242768911082211762}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.784, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1138302608592238422}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
