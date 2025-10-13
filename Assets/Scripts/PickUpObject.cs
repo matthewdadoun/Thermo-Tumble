@@ -1,7 +1,4 @@
-using System;
-using System.Numerics;
-using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine;/**/
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -20,7 +17,22 @@ public class PickUpObject : MonoBehaviour, IGrabbable
         _col = GetComponent<Collider>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void OnTriggerEnter(Collider other)
+    {
+        // Retrieve destructible component
+        var destructible = other.gameObject.GetComponent<IDestructible>();
+        
+        // Perform on destroy interface function
+        destructible?.OnDestructibleOverlap(gameObject);
+
+        // If the destructible
+        if (destructible != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /*// Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
     }
@@ -28,7 +40,7 @@ public class PickUpObject : MonoBehaviour, IGrabbable
     // Update is called once per frame
     void Update()
     {
-    }
+    }*/
 
     public void OnGrab(Transform holder)
     {
@@ -38,7 +50,7 @@ public class PickUpObject : MonoBehaviour, IGrabbable
 
         // set collision enabled to be false
         _col.enabled = false;
-        
+
         // Set transform parent to be the holder
         transform.SetParent(holder, worldPositionStays: false);
         transform.localPosition = Vector3.zero;
@@ -54,7 +66,7 @@ public class PickUpObject : MonoBehaviour, IGrabbable
 
         // set collision enabled to be false
         _col.enabled = true;
-        
+
         transform.SetParent(null, true);
         _rb.AddForce((throwDirection + Vector3.up) * throwForce);
     }
