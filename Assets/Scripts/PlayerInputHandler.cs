@@ -23,18 +23,22 @@ public class PlayerInputHandler : MonoBehaviour
     private Collider _col;
 
     // Whether the player is holding an object
-    private bool _isHolding;
+    /*private bool _isHolding;*/
 
     // Store last input direction
     private Vector3 _lastInputDirection;
 
-
+    
     [FormerlySerializedAs("extraHeight")]
     [Header("Ground checking")]
 
     // The extra height to check for when checking if the player is grounded
     [SerializeField]
-    private float extraTraceLen = 0.05f;
+    private float groundTraceLen = 0.05f;
+    
+    // The extra height to check for when checking if the player is grounded
+    [SerializeField]
+    private float pickUpTraceLen = 0.15f;
 
     [SerializeField] private LayerMask groundMask;
 
@@ -120,7 +124,7 @@ public class PlayerInputHandler : MonoBehaviour
             var b = _col.bounds;
 
             // Cast from center of box + extra length
-            var rayLen = b.extents.x + extraTraceLen;
+            var rayLen = b.extents.x + pickUpTraceLen;
             var origin = b.center;
 
             // Perform raycast, don't run if hasn't hit anything
@@ -135,7 +139,7 @@ public class PlayerInputHandler : MonoBehaviour
             
             // Store the held grabbable
             _heldGrabbable = grabbable;
-            _isHolding = true;
+            /*_isHolding = true;*/
         }
     }
 
@@ -190,7 +194,7 @@ public class PlayerInputHandler : MonoBehaviour
         var b = _col.bounds;
 
         // Cast from the center straight down to just past the bottom of the bounds
-        float rayLen = b.extents.y + extraTraceLen;
+        float rayLen = b.extents.y + groundTraceLen;
         Vector3 origin = b.center;
 
         if (Physics.Raycast(origin, Vector3.down, out var hit, rayLen, groundMask, QueryTriggerInteraction.Ignore))
