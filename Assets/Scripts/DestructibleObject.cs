@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DestructibleObject : MonoBehaviour, IDestructible
+public class DestructibleObject : ElementalBehaviour, IDestructible
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,5 +20,11 @@ public class DestructibleObject : MonoBehaviour, IDestructible
             // Destroy this game object
             Destroy(gameObject);
         }
+    }
+
+    public override void ReactTo(ElementType other)
+    {
+        // put base logic here
+        throw new System.NotImplementedException();
     }
 }

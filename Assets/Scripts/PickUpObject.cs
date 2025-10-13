@@ -2,7 +2,7 @@ using UnityEngine; /**/
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class PickUpObject : MonoBehaviour, IGrabbable
+public class PickUpObject : ElementalBehaviour, IGrabbable
 {
     // The rigid body of this object
     private Rigidbody _rb;
@@ -71,5 +71,11 @@ public class PickUpObject : MonoBehaviour, IGrabbable
 
         transform.SetParent(null, true);
         _rb.AddForce((throwDirection * throwHorizontalForce) + (Vector3.up * throwVerticalForce));
+    }
+    
+    public override void ReactTo(ElementType other)
+    {
+        // put base logic here
+        throw new System.NotImplementedException();
     }
 }
