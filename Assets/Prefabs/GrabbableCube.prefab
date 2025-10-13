@@ -152,4 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef933c39f977b7d4b9bafb3b50850644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpObject
-  throwForce: 250
+  throwVerticalForce: 100
+  throwHorizontalForce: 600

@@ -1,4 +1,4 @@
-using UnityEngine;/**/
+using UnityEngine; /**/
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -9,7 +9,9 @@ public class PickUpObject : MonoBehaviour, IGrabbable
     private Collider _col;
 
     // The force amount to apply when throwing the object
-    [SerializeField] private float throwForce = 100f;
+    [SerializeField] private float throwVerticalForce = 100f;
+    [SerializeField] private float throwHorizontalForce = 100f;
+
 
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class PickUpObject : MonoBehaviour, IGrabbable
     {
         // Retrieve destructible component
         var destructible = other.gameObject.GetComponent<IDestructible>();
-        
+
         // Perform on destroy interface function
         destructible?.OnDestructibleOverlap(gameObject);
 
@@ -68,6 +70,6 @@ public class PickUpObject : MonoBehaviour, IGrabbable
         _col.enabled = true;
 
         transform.SetParent(null, true);
-        _rb.AddForce((throwDirection + Vector3.up) * throwForce);
+        _rb.AddForce((throwDirection * throwHorizontalForce) + (Vector3.up * throwVerticalForce));
     }
 }
