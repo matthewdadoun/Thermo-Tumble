@@ -27,6 +27,9 @@ public class PlayerInputHandler : MonoBehaviour
     // animation IDs
     private int _animIDSpeed;
     private int _animIDMotionSpeed;
+    private int _animIDJump;
+    private int _animIDInAir;
+    private int _animIDGrounded;
 
     // Whether the player is holding an object
     /*private bool _isHolding;*/
@@ -93,6 +96,9 @@ public class PlayerInputHandler : MonoBehaviour
         // Store anim ID
         _animIDSpeed = Animator.StringToHash("Speed");
         _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        _animIDJump = Animator.StringToHash("Jump");
+        _animIDInAir = Animator.StringToHash("FreeFall");
+        _animIDGrounded = Animator.StringToHash("Grounded");
         
         // Set motion speed to a consistent 1
         _animator.SetFloat(_animIDMotionSpeed, 1f);
@@ -215,8 +221,21 @@ public class PlayerInputHandler : MonoBehaviour
         {
             Debug.DrawLine(origin, origin + Vector3.down * rayLen, Color.red, 0.1f);
 
+            // Store whether is grounded
+            var isGrounded = Vector3.Dot(hit.normal, Vector3.up) > 0.5f;
+            
+            // Update animator params
+            _animator.SetBool(_animIDGrounded, isGrounded);
+            _animator.SetBool(_animIDInAir, !isGrounded);
+
             // optional: require an "up-ish" surface to avoid walls
-            return Vector3.Dot(hit.normal, Vector3.up) > 0.5f;
+            return isGrounded;
+        }
+        else
+        {
+            // Update animator params
+            _animator.SetBool(_animIDGrounded, false);
+            _animator.SetBool(_animIDInAir, true);
         }
 
         return false;
@@ -286,6 +305,14 @@ public class PlayerInputHandler : MonoBehaviour
             // Reset the jump / coyote time buffers
             _jumpBufferTimeElapsed = 0f;
             _coyoteTimeElapsed = 0f;
+            
+            // Set jump to true
+            _animator.SetBool(_animIDJump, true);
+        }
+        else
+        {
+            // set jump to false
+            _animator.SetBool(_animIDJump, false);
         }
 
         // --- Variable height shaping
