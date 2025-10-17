@@ -1,4 +1,3 @@
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -28,17 +27,16 @@ public class PlayerInputHandler : MonoBehaviour
     // Store last input direction
     private Vector3 _lastInputDirection;
 
-    
+
     [FormerlySerializedAs("extraHeight")]
     [Header("Ground checking")]
 
     // The extra height to check for when checking if the player is grounded
     [SerializeField]
     private float groundTraceLen = 0.05f;
-    
+
     // The extra height to check for when checking if the player is grounded
-    [SerializeField]
-    private float pickUpTraceLen = 0.15f;
+    [SerializeField] private float pickUpTraceLen = 0.15f;
 
     [SerializeField] private LayerMask groundMask;
 
@@ -64,10 +62,11 @@ public class PlayerInputHandler : MonoBehaviour
     private bool _jumpHeld; // true while the button is down
     private float _jumpBufferTimeElapsed; // counts down
     private float _coyoteTimeElapsed; // counts down
-    
+
     [Header("Hold / Grab Tuning")]
     // Store the held grabbable object
     private IGrabbable _heldGrabbable;
+
     // The hold point for grabbable
     [SerializeField] GameObject holdPoint;
 
@@ -120,7 +119,7 @@ public class PlayerInputHandler : MonoBehaviour
                 _heldGrabbable = null;
                 return;
             }
-            
+
             var b = _col.bounds;
 
             // Cast from center of box + extra length
@@ -128,7 +127,7 @@ public class PlayerInputHandler : MonoBehaviour
             var origin = b.center;
 
             // Perform raycast, don't run if hasn't hit anything
-            if (!Physics.Raycast(origin, _lastInputDirection, out var hit, rayLen/*, groundMask, QueryTriggerInteraction.Ignore*/))
+            if (!Physics.Raycast(origin, _lastInputDirection, out var hit, rayLen /*, groundMask, QueryTriggerInteraction.Ignore*/))
             {
                 return;
             }
@@ -136,7 +135,7 @@ public class PlayerInputHandler : MonoBehaviour
             // If grabbable, call OnGrab
             var grabbable = hit.collider.gameObject.GetComponent<IGrabbable>();
             grabbable?.OnGrab(holdPoint.transform);
-            
+
             // Store the held grabbable
             _heldGrabbable = grabbable;
             /*_isHolding = true;*/
@@ -232,8 +231,21 @@ public class PlayerInputHandler : MonoBehaviour
             _lastInputDirection = currentVel.normalized;
         }
 
+        if (_lastInputDirection.magnitude > 0f)
+        {
+            // Store current scale
+            var currentScale = transform.localScale;
+            currentScale.z = Mathf.Sign(_lastInputDirection.x);
+
+            // Update current scale
+            transform.localScale = currentScale;
+        }
+
         // Store current velocity
         _rb.linearVelocity = currentVel;
+
+        // Store current rotation
+        var currentRot = _rb.rotation;
     }
 
     // To be called every fixed update for jump logic
