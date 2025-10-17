@@ -26,6 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     
     // animation IDs
     private int _animIDSpeed;
+    private int _animIDMotionSpeed;
 
     // Whether the player is holding an object
     /*private bool _isHolding;*/
@@ -91,6 +92,10 @@ public class PlayerInputHandler : MonoBehaviour
         
         // Store anim ID
         _animIDSpeed = Animator.StringToHash("Speed");
+        _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        
+        // Set motion speed to a consistent 1
+        _animator.SetFloat(_animIDMotionSpeed, 1f);
 
         // Handlers for when a move is performed
         _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
@@ -241,7 +246,8 @@ public class PlayerInputHandler : MonoBehaviour
             _lastInputDirection = currentVel.normalized;
         }
         
-        _animator.SetFloat(_animIDSpeed, currentVel.magnitude * 6f);
+        // Update speed
+        _animator.SetFloat(_animIDSpeed, Mathf.Abs(_moveInput.x));
 
         if (_lastInputDirection.magnitude > 0f)
         {
