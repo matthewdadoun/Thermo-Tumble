@@ -259,16 +259,23 @@ public class PlayerInputHandler : MonoBehaviour
         // Speed up velocity using acceleration
         currentVel.x = Mathf.MoveTowards(currentVel.x, targetVelX, accel * Time.fixedDeltaTime);
 
-        if (currentVel.magnitude > 0.5f)
+        // Keep track of whether input direction has changed
+        var inputDirectionChanged = false;
+
+        if (currentVel.magnitude > 0.5f && Mathf.Abs(_moveInput.x) > 0f)
         {
             // Store the last input direction
             _lastInputDirection = currentVel.normalized;
+
+            // Store whether the input direction has changed
+            inputDirectionChanged = true;
         }
         
         // Update speed
         _animator.SetFloat(_animIDSpeed, Mathf.Abs(_moveInput.x));
 
-        if (_lastInputDirection.magnitude > 0f)
+        // Update whether the input direction has changed
+        if (inputDirectionChanged && _lastInputDirection.magnitude > 0f)
         {
             // Store current scale
             var currentRot = transform.localRotation.eulerAngles;
