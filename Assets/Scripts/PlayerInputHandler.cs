@@ -20,6 +20,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     // The collider of this object
     private Collider _col;
+    
+    // The animator of this object
+    private Animator _animator;
+    
+    // animation IDs
+    private int _animIDSpeed;
 
     // Whether the player is holding an object
     /*private bool _isHolding;*/
@@ -80,7 +86,11 @@ public class PlayerInputHandler : MonoBehaviour
         // Get the rigid body of the character
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
+        _animator = GetComponent<Animator>();
         Cache();
+        
+        // Store anim ID
+        _animIDSpeed = Animator.StringToHash("Speed");
 
         // Handlers for when a move is performed
         _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
@@ -230,6 +240,8 @@ public class PlayerInputHandler : MonoBehaviour
             // Store the last input direction
             _lastInputDirection = currentVel.normalized;
         }
+        
+        _animator.SetFloat(_animIDSpeed, currentVel.magnitude * 6f);
 
         if (_lastInputDirection.magnitude > 0f)
         {
@@ -244,8 +256,8 @@ public class PlayerInputHandler : MonoBehaviour
         // Store current velocity
         _rb.linearVelocity = currentVel;
 
-        // Store current rotation
-        var currentRot = _rb.rotation;
+        /*// Store current rotation
+        var currentRot = _rb.rotation;*/
     }
 
     // To be called every fixed update for jump logic
