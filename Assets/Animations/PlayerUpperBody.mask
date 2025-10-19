@@ -7,7 +7,7 @@ AvatarMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerUpperBody
-  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
@@ -22,23 +22,23 @@ AvatarMask:
   - m_Path: Skeleton/Hips/Left_UpperLeg
     m_Weight: 0
   - m_Path: Skeleton/Hips/Left_UpperLeg/Left_LowerLeg
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Left_UpperLeg/Left_LowerLeg/Left_Foot
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Left_UpperLeg/Left_LowerLeg/Left_Foot/Left_Toes
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Left_UpperLeg/Left_LowerLeg/Left_Foot/Left_Toes/Left_ToesEnd
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Right_UpperLeg
     m_Weight: 0
   - m_Path: Skeleton/Hips/Right_UpperLeg/Right_LowerLeg
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Right_UpperLeg/Right_LowerLeg/Right_Foot
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Right_UpperLeg/Right_LowerLeg/Right_Foot/Right_Toes
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Right_UpperLeg/Right_LowerLeg/Right_Foot/Right_Toes/Right_ToesEnd
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Skeleton/Hips/Spine
     m_Weight: 1
   - m_Path: Skeleton/Hips/Spine/Chest
