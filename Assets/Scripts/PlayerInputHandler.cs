@@ -20,16 +20,20 @@ public class PlayerInputHandler : MonoBehaviour
 
     // The collider of this object
     private Collider _col;
-    
+
     // The animator of this object
     private Animator _animator;
-    
+
     // animation IDs
     private int _animIDSpeed;
     private int _animIDMotionSpeed;
     private int _animIDJump;
     private int _animIDInAir;
     private int _animIDGrounded;
+
+    // Set up trigger IDs
+    [SerializeField] private string animIDPunch = "Punch";
+    [SerializeField] private string animIDKick = "Kick";
 
     // Whether the player is holding an object
     /*private bool _isHolding;*/
@@ -92,14 +96,14 @@ public class PlayerInputHandler : MonoBehaviour
         _col = GetComponent<Collider>();
         _animator = GetComponent<Animator>();
         Cache();
-        
+
         // Store anim ID
         _animIDSpeed = Animator.StringToHash("Speed");
         _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         _animIDJump = Animator.StringToHash("Jump");
         _animIDInAir = Animator.StringToHash("FreeFall");
         _animIDGrounded = Animator.StringToHash("Grounded");
-        
+
         // Set motion speed to a consistent 1
         _animator.SetFloat(_animIDMotionSpeed, 1f);
 
@@ -127,6 +131,25 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnPunch(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started || ctx.performed)
+        {
+            // Set up the punch trigger
+            _animator.SetTrigger(animIDPunch);
+        }
+    }
+    
+    public void OnKick(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started || ctx.performed)
+        {
+            // Set up kick trigger
+            _animator.SetTrigger(animIDKick);
+        }
+    }
+
+
 
     public void OnGrab(InputAction.CallbackContext ctx)
     {
@@ -143,7 +166,7 @@ public class PlayerInputHandler : MonoBehaviour
 
             var b = _col.bounds;
 
-            // Cast from center of box + extra length
+            // Cast from the center of the box and extra length
             var rayLen = b.extents.x + pickUpTraceLen;
             var origin = b.center;
 
@@ -223,7 +246,7 @@ public class PlayerInputHandler : MonoBehaviour
 
             // Store whether is grounded
             var isGrounded = Vector3.Dot(hit.normal, Vector3.up) > 0.5f;
-            
+
             // Update animator params
             _animator.SetBool(_animIDGrounded, isGrounded);
             _animator.SetBool(_animIDInAir, !isGrounded);
@@ -270,7 +293,7 @@ public class PlayerInputHandler : MonoBehaviour
             // Store whether the input direction has changed
             inputDirectionChanged = true;
         }
-        
+
         // Update speed
         _animator.SetFloat(_animIDSpeed, Mathf.Abs(_moveInput.x));
 
@@ -312,7 +335,7 @@ public class PlayerInputHandler : MonoBehaviour
             // Reset the jump / coyote time buffers
             _jumpBufferTimeElapsed = 0f;
             _coyoteTimeElapsed = 0f;
-            
+
             // Set jump to true
             _animator.SetBool(_animIDJump, true);
         }

@@ -302,6 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7558f4bfd6780274e94881acfa177b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
+  animIDPunch: Punch
+  animIDKick: Kick
   groundTraceLen: 0.05
   pickUpTraceLen: 0.15
   groundMask:
@@ -376,6 +378,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7081028d-c6b4-44f4-ae27-b26f8740e1e2
     m_ActionName: 'Player/Pick Up / Throw[/Keyboard/k]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2706930893425424931}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPunch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b58ab650-724e-444b-8f99-da6d3cb01bf5
+    m_ActionName: 'Player/Punch[/Keyboard/l]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba768a96-b65c-488d-a610-39b0f1a19466
+    m_ActionName: 'Player/Kick[/Keyboard/k]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
