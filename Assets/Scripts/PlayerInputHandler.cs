@@ -301,11 +301,11 @@ public class PlayerInputHandler : MonoBehaviour
         if (inputDirectionChanged && _lastInputDirection.magnitude > 0f)
         {
             // Store current scale
-            var currentRot = transform.localRotation.eulerAngles;
+            var currentRot = transform.rotation.eulerAngles;
             currentRot.y = (90f * Mathf.Sign(_lastInputDirection.x));
 
             // Update current scale
-            transform.localRotation = Quaternion.Euler(currentRot);
+            transform.rotation = Quaternion.Euler(currentRot);
         }
 
         // Store current velocity

@@ -395,7 +395,19 @@ MonoBehaviour:
     m_ActionId: b58ab650-724e-444b-8f99-da6d3cb01bf5
     m_ActionName: 'Player/Punch[/Keyboard/l]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2706930893425424931}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnKick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ba768a96-b65c-488d-a610-39b0f1a19466
     m_ActionName: 'Player/Kick[/Keyboard/k]'
   m_NeverAutoSwitchControlSchemes: 0
