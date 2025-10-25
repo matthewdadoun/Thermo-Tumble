@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -85,6 +86,17 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] GameObject holdPoint;
 
     // call this from Awake once
+    
+    
+    [Header("Materials")]
+
+    [SerializeField] private Material fireMat; // The material to use when transforming into fire form
+    [SerializeField] private Material iceMat; // The material to use when transforming into ice form
+    /*[SerializeField] private float groundProbeExtra = 0.05f; // bounds-based probe cushion*/
+    
+    // The mesh renderer of the character
+    SkinnedMeshRenderer _skinnedMeshRenderer;
+
 
     void Awake()
     {
@@ -95,6 +107,7 @@ public class PlayerInputHandler : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
         _animator = GetComponent<Animator>();
+        _skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         Cache();
 
         // Store anim ID
@@ -138,6 +151,18 @@ public class PlayerInputHandler : MonoBehaviour
             // Set up the punch trigger
             _animator.SetTrigger(animIDPunch);
         }
+        
+        if (iceMat != null)
+        {
+            // Set the material to ice
+            List<Material> materials = new List<Material>(_skinnedMeshRenderer.materials);
+            for (int i = 0; i < materials.Count; i++)
+            {
+                materials[i] = iceMat;
+            }
+            
+            _skinnedMeshRenderer.SetMaterials(materials);
+        }
     }
     
     public void OnKick(InputAction.CallbackContext ctx)
@@ -146,6 +171,18 @@ public class PlayerInputHandler : MonoBehaviour
         {
             // Set up kick trigger
             _animator.SetTrigger(animIDKick);
+        }
+
+        if (fireMat != null)
+        {
+            // Set the material to ice
+            List<Material> materials = new List<Material>(_skinnedMeshRenderer.materials);
+            for (int i = 0; i < materials.Count; i++)
+            {
+                materials[i] = fireMat;
+            }
+            
+            _skinnedMeshRenderer.SetMaterials(materials);
         }
     }
 
