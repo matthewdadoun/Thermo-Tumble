@@ -122,4 +122,21 @@ public abstract class ElementalBehaviour : MonoBehaviour
         /*var reaction = ElementReactions.Get(element, other);
         Debug.Log($"{name} ({element}) reacts to {other}: {reaction}");*/
     }
+
+    protected bool IsOpposingElement(ElementType other)
+    {
+        switch (element)
+        {
+            // put base logic here
+            case ElementType.Ice when other == ElementType.Lava:
+            case ElementType.Lava when other == ElementType.Ice:
+            {
+                return true;
+            }
+            default:
+            {
+                return false;
+            }
+        }
+    }
 }
