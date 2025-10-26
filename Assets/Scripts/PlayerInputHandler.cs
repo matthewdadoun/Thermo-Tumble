@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -85,18 +84,6 @@ public class PlayerInputHandler : MonoBehaviour
     // The hold point for grabbable
     [SerializeField] GameObject holdPoint;
 
-    // call this from Awake once
-    
-    
-    [Header("Materials")]
-
-    [SerializeField] private Material fireMat; // The material to use when transforming into fire form
-    [SerializeField] private Material iceMat; // The material to use when transforming into ice form
-    /*[SerializeField] private float groundProbeExtra = 0.05f; // bounds-based probe cushion*/
-    
-    // The mesh renderer of the character
-    SkinnedMeshRenderer _skinnedMeshRenderer;
-
     // store elemental behavior
     private ElementalBehaviour _elementalBehaviour;
 
@@ -110,7 +97,6 @@ public class PlayerInputHandler : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
         _animator = GetComponent<Animator>();
-        _skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         _elementalBehaviour = GetComponent<ElementalBehaviour>();
         Cache();
 
@@ -155,23 +141,11 @@ public class PlayerInputHandler : MonoBehaviour
             // Set up the punch trigger
             _animator.SetTrigger(animIDPunch);
         }
-        
-        if (iceMat != null)
-        {
-            // Set the material to ice
-            List<Material> materials = new List<Material>(_skinnedMeshRenderer.materials);
-            for (int i = 0; i < materials.Count; i++)
-            {
-                materials[i] = iceMat;
-            }
-            
-            _skinnedMeshRenderer.SetMaterials(materials);
-        }
 
         // Store element type to ice
         _elementalBehaviour.Element = ElementType.Ice;
     }
-    
+
     public void OnKick(InputAction.CallbackContext ctx)
     {
         if (ctx.started || ctx.performed)
@@ -179,23 +153,10 @@ public class PlayerInputHandler : MonoBehaviour
             // Set up kick trigger
             _animator.SetTrigger(animIDKick);
         }
-
-        if (fireMat != null)
-        {
-            // Set the material to ice
-            List<Material> materials = new List<Material>(_skinnedMeshRenderer.materials);
-            for (int i = 0; i < materials.Count; i++)
-            {
-                materials[i] = fireMat;
-            }
-            
-            _skinnedMeshRenderer.SetMaterials(materials);
-            
-            // Store element type to lava
-            _elementalBehaviour.Element = ElementType.Lava;
-        }
+        
+        // Store element type to lava
+        _elementalBehaviour.Element = ElementType.Lava;
     }
-
 
 
     public void OnGrab(InputAction.CallbackContext ctx)
