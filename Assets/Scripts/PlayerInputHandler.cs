@@ -97,17 +97,21 @@ public class PlayerInputHandler : MonoBehaviour
     // The mesh renderer of the character
     SkinnedMeshRenderer _skinnedMeshRenderer;
 
+    // store elemental behavior
+    private ElementalBehaviour _elementalBehaviour;
+
 
     void Awake()
     {
         // Create a new player input actions object
         _controls = new PlayerInputActions();
 
-        // Get the rigid body of the character
+        // Store all members
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
         _animator = GetComponent<Animator>();
         _skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+        _elementalBehaviour = GetComponent<ElementalBehaviour>();
         Cache();
 
         // Store anim ID
@@ -163,6 +167,9 @@ public class PlayerInputHandler : MonoBehaviour
             
             _skinnedMeshRenderer.SetMaterials(materials);
         }
+
+        // Store element type to ice
+        _elementalBehaviour.Element = ElementType.Ice;
     }
     
     public void OnKick(InputAction.CallbackContext ctx)
@@ -183,6 +190,9 @@ public class PlayerInputHandler : MonoBehaviour
             }
             
             _skinnedMeshRenderer.SetMaterials(materials);
+            
+            // Store element type to lava
+            _elementalBehaviour.Element = ElementType.Lava;
         }
     }
 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public enum ElementType
 {
+    None,
     Ice,
     Lava,
     Acid,
@@ -13,7 +14,13 @@ public enum ElementType
 public abstract class ElementalBehaviour : MonoBehaviour
 {
     [SerializeField] protected ElementType element;
-    public ElementType Element => element;
+    
+    // Getter / setter for element type
+    public ElementType Element
+    {
+        get => element;
+        set => element = value;
+    }
 
     public virtual void ReactTo(ElementType other)
     {

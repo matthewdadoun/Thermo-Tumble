@@ -2,7 +2,7 @@ using UnityEngine; /**/
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class PickUpObject : ElementalBehaviour, IGrabbable
+public class PickUpObject : MonoBehaviour, IGrabbable
 {
     // The rigid body of this object
     private Rigidbody _rb;
@@ -19,7 +19,7 @@ public class PickUpObject : ElementalBehaviour, IGrabbable
         _col = GetComponent<Collider>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         // Retrieve destructible component
         var destructible = other.gameObject.GetComponent<IDestructible>();
@@ -32,7 +32,7 @@ public class PickUpObject : ElementalBehaviour, IGrabbable
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 
     /*// Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,11 +71,5 @@ public class PickUpObject : ElementalBehaviour, IGrabbable
 
         transform.SetParent(null, true);
         _rb.AddForce((throwDirection * throwHorizontalForce) + (Vector3.up * throwVerticalForce));
-    }
-    
-    public override void ReactTo(ElementType other)
-    {
-        // put base logic here
-        throw new System.NotImplementedException();
     }
 }

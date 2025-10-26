@@ -22,9 +22,30 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var elementalBehaviour = other.gameObject.GetComponent<ElementalBehaviour>();
+        if (elementalBehaviour == null)
+        {
+            return;
+        }
+        
+        // Have both objects react to each other
+        elementalBehaviour.ReactTo(element);
+        ReactTo(elementalBehaviour.Element);
+    }
+
     public override void ReactTo(ElementType other)
     {
-        // put base logic here
-        throw new System.NotImplementedException();
+        switch (element)
+        {
+            // put base logic here
+            case ElementType.Ice when other == ElementType.Lava:
+            case ElementType.Lava when other == ElementType.Ice:
+            {
+                Destroy(gameObject);
+                break;
+            }
+        }
     }
 }

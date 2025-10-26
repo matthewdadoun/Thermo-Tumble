@@ -233,6 +233,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3182215385907794237}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7472743168785620053}
   m_SourcePrefab: {fileID: 100100000, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
 --- !u!4 &12969460227677696 stripped
 Transform:
@@ -631,8 +634,8 @@ MonoBehaviour:
   coyoteTime: 0.12
   jumpBuffer: 0.05
   holdPoint: {fileID: 6242768911082211762}
-  fireMat: {fileID: 2100000, guid: 4726dff4cff57a24ca896214d4885bbc, type: 2}
-  iceMat: {fileID: 2100000, guid: 299166cc9328e484ba27f7c6c60bcc79, type: 2}
+  fireMat: {fileID: 2100000, guid: 299166cc9328e484ba27f7c6c60bcc79, type: 2}
+  iceMat: {fileID: 2100000, guid: 4726dff4cff57a24ca896214d4885bbc, type: 2}
 --- !u!114 &832110999971551674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,6 +863,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000059604645, y: -0.09214255, z: 0.026248634}
     m_Extent: {x: 0.52818453, y: 0.88092995, z: 0.22050177}
   m_DirtyAABB: 0
+--- !u!114 &7472743168785620053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700634075042760170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d16bb1dd9ee4a64fb6787d095829cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestructibleObject
+  element: 0
 --- !u!4 &8720527038714626199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 971155075942463532, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
