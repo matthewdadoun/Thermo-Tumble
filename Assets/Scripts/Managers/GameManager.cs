@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // The single instance of this game manager
-    public static GameManager Instance { get; set; }
+    public static GameManager Instance { get; private set; }
     
     // Retrieve fade controller instance
-    public FadeController FadeControllerInstance { get; private set; }
+    public FadeController FadeControllerInstance { get; set; }
     
     // Store the scene index between loading scenes
     private int _sceneIndex = 0;
@@ -18,11 +19,17 @@ public class GameManager : MonoBehaviour
         // Check if there is an old existing instance
         if (Instance != null && Instance != this)
         {
-            // Destroy the old lingering game object if the instance is not null
+            // Destroy the duplicate game object if it exists
             Destroy(gameObject);
 
             // Store scene
             var scene = SceneData.Instance?.scenes[_sceneIndex];
+
+            // If the scene manager already has more than 1 scene, don't load the new scene
+            if (SceneManager.sceneCount > 1)
+            {
+                return;
+            }
             
             // Load the sub-scene
             SceneManager.LoadScene(scene?.name, LoadSceneMode.Additive);
@@ -32,8 +39,5 @@ public class GameManager : MonoBehaviour
         // Store instance / don't destroy on load
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        // Grab the UI even if it's inactive
-        FadeControllerInstance = FindAnyObjectByType<FadeController>();
     }
 }

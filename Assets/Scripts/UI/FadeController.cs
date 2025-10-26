@@ -25,6 +25,9 @@ public class FadeController : MonoBehaviour
 
         // Begin fade in from black
         FadeInFromBlack(3f);
+
+        // Set the fade controller instance
+        GameManager.Instance.FadeControllerInstance = this;
     }
 
     public void FadeTo(float targetAlpha, float duration, Action onComplete = null)
