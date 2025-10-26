@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +20,14 @@ public abstract class ElementalBehaviour : MonoBehaviour
 
     private Renderer _renderer;
 
-    private void Awake()
+    private void OnValidate()
+    {
+        Cache();
+
+        SetElement(element);
+    }
+
+    void Cache()
     {
         // Store mesh renderer
         _renderer = gameObject.GetComponent<Renderer>();
@@ -29,6 +37,12 @@ public abstract class ElementalBehaviour : MonoBehaviour
             // retrieve elemental materials singleton
             _elementMats = ElementalMaterials.Instance;
         }
+    }
+
+    private void Awake()
+    {
+        // Cache objects
+        Cache();
 
         // Set element's material
         SetElement(element);
@@ -43,7 +57,7 @@ public abstract class ElementalBehaviour : MonoBehaviour
     public void SetElement(ElementType elementType)
     {
         // Update element type
-        
+
         element = elementType;
         if (!_elementMats)
         {
@@ -66,12 +80,36 @@ public abstract class ElementalBehaviour : MonoBehaviour
         {
             return;
         }
-            
+
         // Set the material to ice
-        List<Material> materials = new List<Material>(_renderer.materials);
+        List<Material> materials = null;
+
+        // use "Shared" materials if in editor
+        if (Application.isEditor)
+        {
+            materials = new List<Material>(_renderer.sharedMaterials);
+        }
+
+        // otherwise, use main materials
+        else
+        {
+            materials = new List<Material>(_renderer.materials);
+        }
+
+        // Update new material
         for (int i = 0; i < materials.Count; i++)
         {
             materials[i] = mat;
+        }
+
+        // Update materials / shared materials
+        if (Application.isEditor)
+        {
+            _renderer.SetSharedMaterials(materials);
+        }
+        else
+        {
+            _renderer.SetMaterials(materials);
         }
 
         // set new materials
