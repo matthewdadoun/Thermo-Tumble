@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // The single instance of this game manager
-    private static GameManager Instance { get; set; }
+    public static GameManager Instance { get; set; }
     
     // Retrieve fade controller instance
     public FadeController FadeControllerInstance { get; private set; }
