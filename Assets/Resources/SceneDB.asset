@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b79a0a060d7bb48bfc7ad9a96d8bae, type: 3}
   m_Name: SceneDB
   m_EditorClassIdentifier: Assembly-CSharp::SceneData
-  scenes: []
+  scenes:
+  - {fileID: 102900000, guid: 1489304a0f3502449bf6049597983bc1, type: 3}
