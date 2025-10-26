@@ -143,7 +143,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         // Store element type to ice
-        _elementalBehaviour.Element = ElementType.Ice;
+        _elementalBehaviour.SetElement(ElementType.Ice);
     }
 
     public void OnKick(InputAction.CallbackContext ctx)
@@ -155,7 +155,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         
         // Store element type to lava
-        _elementalBehaviour.Element = ElementType.Lava;
+        _elementalBehaviour.SetElement(ElementType.Lava);
     }
 
 
