@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1000)] // make sure it initializes early
 public class GameManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
     
     // Retrieve fade controller instance
     public FadeController FadeControllerInstance { get; private set; }
+    
+    // Store the scene index between loading scenes
+    private int _sceneIndex = 0;
 
     private void Awake()
     {
@@ -15,7 +19,13 @@ public class GameManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             // Destroy the old lingering game object if the instance is not null
-            Destroy(gameObject); 
+            Destroy(gameObject);
+
+            // Store scene
+            var scene = SceneData.Instance?.scenes[_sceneIndex];
+            
+            // Load the sub-scene
+            SceneManager.LoadScene(scene?.name, LoadSceneMode.Additive);
             return;
         }
         
