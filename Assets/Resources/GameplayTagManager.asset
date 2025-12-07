@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f532d7b06525324ab559c4448e98768, type: 3}
+  m_Name: GameplayTagManager
+  m_EditorClassIdentifier: Assembly-CSharp::TelePresent.GameplayTags.GameplayTagManager
+  isExpanded: 0
+  originalAsset: {fileID: 0}
+  isLocalClone: 0
+  allTags:
+  - tag: {fileID: 11400000, guid: 26215b85432cab8468c2d300b5c8e80b, type: 2}
+    tagID: 1
+    parentTagID: -1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 0
+  - tag: {fileID: 11400000, guid: f94f8fd9ef3c55048b2dcc9a17a61082, type: 2}
+    tagID: 2
+    parentTagID: 1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 0
+  - tag: {fileID: 11400000, guid: 8942ce20d6073434185c70d6f3ea099a, type: 2}
+    tagID: 3
+    parentTagID: 1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 0
+  - tag: {fileID: 11400000, guid: 9ede6ec4fbf639f418d2597c9f12a46e, type: 2}
+    tagID: 4
+    parentTagID: 1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 0
+  - tag: {fileID: 11400000, guid: c2a8160a19a051e4584ce00d6b372aed, type: 2}
+    tagID: 5
+    parentTagID: 1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 0
