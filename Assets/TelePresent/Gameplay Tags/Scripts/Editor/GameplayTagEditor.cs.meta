@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3359d50d8b9deee48873b2e78e8ed816
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315140
+  packageName: Gameplay Tags
+  packageVersion: 1.0
+  assetPath: Assets/TelePresent/Gameplay Tags/Scripts/Editor/GameplayTagEditor.cs
+  uploadId: 747177

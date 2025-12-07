@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 098d8c882a7d6a347b5d1680c2ef737d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315140
+  packageName: Gameplay Tags
+  packageVersion: 1.0
+  assetPath: Assets/TelePresent/Gameplay Tags/DemoAssets/Scripts/GTDemo_Light Switch
+    Controller.cs
+  uploadId: 747177

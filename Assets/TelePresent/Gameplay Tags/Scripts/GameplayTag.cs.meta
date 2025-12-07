@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 771b2f0fc3edd6a4fa0634e94f492550
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315140
+  packageName: Gameplay Tags
+  packageVersion: 1.0
+  assetPath: Assets/TelePresent/Gameplay Tags/Scripts/GameplayTag.cs
+  uploadId: 747177

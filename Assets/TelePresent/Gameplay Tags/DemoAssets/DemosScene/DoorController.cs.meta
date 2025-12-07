@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9f3d66f3d803e444983870b26bff44f9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315140
+  packageName: Gameplay Tags
+  packageVersion: 1.0
+  assetPath: Assets/TelePresent/Gameplay Tags/DemoAssets/DemosScene/DoorController.cs
+  uploadId: 747177

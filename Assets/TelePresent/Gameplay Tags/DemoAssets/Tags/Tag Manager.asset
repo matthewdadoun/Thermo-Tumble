@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f532d7b06525324ab559c4448e98768, type: 3}
+  m_Name: Tag Manager
+  m_EditorClassIdentifier: 
+  isExpanded: 1
+  originalAsset: {fileID: 0}
+  isLocalClone: 0
+  allTags:
+  - tag: {fileID: 11400000, guid: a1f5e987769779649ba5e40e7ca0802c, type: 2}
+    tagID: 1
+    parentTagID: -1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 1
+  - tag: {fileID: 11400000, guid: 765db8aa69169a14e8bf1cb3e1470eed, type: 2}
+    tagID: 2
+    parentTagID: 1
+    isTagEnabled: 1
+    localActive: 0
+    localActiveInitialized: 1
