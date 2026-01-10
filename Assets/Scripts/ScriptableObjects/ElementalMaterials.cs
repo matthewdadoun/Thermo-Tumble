@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,6 +8,7 @@ public struct ElementMaterialPair
     public Material material;
 }
 
+// Data type which holds a list of materials related to the "Element" enum
 [CreateAssetMenu(fileName = "ElementalMaterialsDB", menuName = "Scriptable Objects/ElementalMaterials")]
 public class ElementalMaterials : ScriptableObject
 {
