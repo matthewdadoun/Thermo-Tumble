@@ -29,6 +29,18 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
     {
         if (IsOpposingElement(other))
         {
+            var explosionInstance = ElementalExplosions.Instance;
+            
+            // Check to see which explosion to use
+            foreach (var elementExplosion in explosionInstance.elementExplosions)
+            {
+                // Cause an explosion
+                if (elementExplosion.element == element)
+                {
+                    Instantiate(elementExplosion.explosionObject, transform.position, Quaternion.identity);
+                    break;
+                }
+            }
             Destroy(gameObject);
         }
     }
