@@ -1,8 +1,5 @@
 using UnityEngine;
 
-using TMPro;
-using System;
-
 namespace MirzaBeig.CinematicExplosionsFree
 {
     [ExecuteAlways]
@@ -19,19 +16,12 @@ namespace MirzaBeig.CinematicExplosionsFree
 
         public int[] fpsButtons = new int[] { 0, 10, 30, 45, 60, 90, 120 };
 
-        void Start()
-        {
-
-        }
-
         void OnGUI()
         {
-            float positionY = position.y;
+            var positionY = position.y;
 
-            for (int i = 0; i < fpsButtons.Length; i++)
+            foreach (var fps in fpsButtons)
             {
-                int fps = fpsButtons[i];
-
                 if (GUI.Button(new Rect(position.x, positionY, size.x, size.y), $"FPS: {fps}"))
                 {
                     Application.targetFrameRate = fps;

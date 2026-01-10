@@ -8,10 +8,10 @@ namespace MirzaBeig.CinematicExplosionsFree
     [ExecuteAlways]
     public class FPSDisplay : MonoBehaviour
     {
-        public float fps { get; private set; }      // Frames per second (interval average).
-        public float frameMS { get; private set; }  // Milliseconds per frame (interval average).
+        public float FPS { get; private set; }      // Frames per second (interval average).
+        public float FrameMS { get; private set; }  // Milliseconds per frame (interval average).
 
-        GUIStyle style = new GUIStyle();
+        private readonly GUIStyle _style = new GUIStyle();
 
         public int size = 16;
 
@@ -30,8 +30,8 @@ namespace MirzaBeig.CinematicExplosionsFree
 
         public float updateInterval = 0.5f;
 
-        float elapsedIntervalTime;
-        int intervalFrameCount;
+        float _elapsedIntervalTime;
+        int _intervalFrameCount;
 
         [Space]
 
@@ -45,31 +45,31 @@ namespace MirzaBeig.CinematicExplosionsFree
             // 1 / time.unscaledDeltaTime for same-frame results.
             // Same as above, but uses accumulated frameCount and deltaTime.
 
-            return intervalFrameCount / elapsedIntervalTime;
+            return _intervalFrameCount / _elapsedIntervalTime;
         }
         public float GetIntervalFrameMS()
         {
             // Calculate average frame delta during interval (time / frames).
             // Same as Time.unscaledDeltaTime * 1000.0f, using accumulation.
 
-            return (elapsedIntervalTime * 1000.0f) / intervalFrameCount;
+            return (_elapsedIntervalTime * 1000.0f) / _intervalFrameCount;
         }
 
         void Update()
         {
-            intervalFrameCount++;
-            elapsedIntervalTime += Time.unscaledDeltaTime;
+            _intervalFrameCount++;
+            _elapsedIntervalTime += Time.unscaledDeltaTime;
 
-            if (elapsedIntervalTime >= updateInterval)
+            if (_elapsedIntervalTime >= updateInterval)
             {
-                fps = GetIntervalFPS();
-                frameMS = GetIntervalFrameMS();
+                FPS = GetIntervalFPS();
+                FrameMS = GetIntervalFrameMS();
 
-                fps = (float)Math.Round(fps, 2);
-                frameMS = (float)Math.Round(frameMS, 2);
+                FPS = (float)Math.Round(FPS, 2);
+                FrameMS = (float)Math.Round(FrameMS, 2);
 
-                intervalFrameCount = 0;
-                elapsedIntervalTime = 0.0f;
+                _intervalFrameCount = 0;
+                _elapsedIntervalTime = 0.0f;
             }
 
             if (textMesh)
@@ -78,15 +78,15 @@ namespace MirzaBeig.CinematicExplosionsFree
             }
             else
             {
-                style.fontSize = size;
-                style.fontStyle = FontStyle.Bold;
-                style.normal.textColor = colour;
+                _style.fontSize = size;
+                _style.fontStyle = FontStyle.Bold;
+                _style.normal.textColor = colour;
             }
         }
 
         string GetFPSText()
         {
-            return $"FPS: {fps:.00} ({frameMS:.00} ms)";
+            return $"FPS: {FPS:.00} ({FrameMS:.00} ms)";
         }
 
         void OnGUI()
@@ -99,10 +99,10 @@ namespace MirzaBeig.CinematicExplosionsFree
 
                 if (alignment == Alignment.Right)
                 {
-                    x = Screen.width - x - style.CalcSize(new GUIContent(fpsText)).x;
+                    x = Screen.width - x - _style.CalcSize(new GUIContent(fpsText)).x;
                 }
 
-                GUI.Label(new Rect(x, position.y, 200, 100), fpsText, style);
+                GUI.Label(new Rect(x, position.y, 200, 100), fpsText, _style);
             }
         }
     }

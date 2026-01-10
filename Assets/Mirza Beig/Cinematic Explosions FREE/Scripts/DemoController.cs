@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +15,9 @@ namespace MirzaBeig.CinematicExplosionsFree
             Day,
             Night,
         }
-        Camera camera;
+        Camera _camera;
 
-        List<ParticleSystem> particleSystems;
+        List<ParticleSystem> _particleSystems;
         public Transform particleSystemsContainer;
 
         [Space]
@@ -30,7 +29,7 @@ namespace MirzaBeig.CinematicExplosionsFree
 
         public Scene currentScene = Scene.Day;
 
-        ReflectionProbe[] reflectionProbes;
+        ReflectionProbe[] _reflectionProbes;
 
         [Space]
 
@@ -44,12 +43,12 @@ namespace MirzaBeig.CinematicExplosionsFree
         {
             // Set scene.
 
-            camera = Camera.main;
+            _camera = Camera.main;
             Application.targetFrameRate = targetFrameRate;
 
             // Find all reflection probes.
 
-            reflectionProbes = FindObjectsByType<ReflectionProbe>(
+            _reflectionProbes = FindObjectsByType<ReflectionProbe>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 
             switch (currentScene)
@@ -88,10 +87,10 @@ namespace MirzaBeig.CinematicExplosionsFree
                     continue;
                 }
 
-                ParticleSystem particleSystem = childTransform.GetComponent<ParticleSystem>();
+                ParticleSystem explosionParticleSystem = childTransform.GetComponent<ParticleSystem>();
 
                 Button button = Instantiate(buttonPrefab, buttonContainer.transform);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = particleSystem.name;
+                button.GetComponentInChildren<TextMeshProUGUI>().text = explosionParticleSystem.name;
 
                 button.onClick.AddListener(() => childTransform.gameObject.SetActive(false));
                 button.onClick.AddListener(() => childTransform.gameObject.SetActive(true));
@@ -104,16 +103,16 @@ namespace MirzaBeig.CinematicExplosionsFree
 
         void UpdateReflections()
         {
-            for (int i = 0; i < reflectionProbes.Length; i++)
+            for (int i = 0; i < _reflectionProbes.Length; i++)
             {
-                reflectionProbes[i].RenderProbe();
+                _reflectionProbes[i].RenderProbe();
             }
         }
         void SetReflectionClearFlags(ReflectionProbeClearFlags clearFlags)
         {
-            for (int i = 0; i < reflectionProbes.Length; i++)
+            for (int i = 0; i < _reflectionProbes.Length; i++)
             {
-                reflectionProbes[i].clearFlags = clearFlags;
+                _reflectionProbes[i].clearFlags = clearFlags;
             }
         }
 
@@ -123,7 +122,7 @@ namespace MirzaBeig.CinematicExplosionsFree
         {
             currentScene = Scene.Night;
 
-            camera.clearFlags = CameraClearFlags.SolidColor;
+            _camera.clearFlags = CameraClearFlags.SolidColor;
 
             RenderSettings.ambientIntensity = 0.8f;
             RenderSettings.reflectionIntensity = 0.5f;
@@ -138,7 +137,7 @@ namespace MirzaBeig.CinematicExplosionsFree
         {
             currentScene = Scene.Day;
 
-            camera.clearFlags = CameraClearFlags.Skybox;
+            _camera.clearFlags = CameraClearFlags.Skybox;
 
             RenderSettings.ambientIntensity = 1.0f;
             RenderSettings.reflectionIntensity = 1.0f;

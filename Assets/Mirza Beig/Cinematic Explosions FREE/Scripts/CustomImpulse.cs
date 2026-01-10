@@ -1,33 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-using Cinemachine;
+using Unity.Cinemachine;
 
 namespace MirzaBeig.CinematicExplosionsFree
 {
     public class CustomImpulse : MonoBehaviour
     {
-        CinemachineImpulseSource source;
-
-        void Start()
-        {
-
-        }
+        private CinemachineImpulseSource _source;
 
         void OnEnable()
         {
-            if (!source)
+            if (!_source)
             {
-                source = GetComponent<CinemachineImpulseSource>();
+                _source = GetComponent<CinemachineImpulseSource>();
             }
 
-            source.GenerateImpulse();
-        }
-
-        void Update()
-        {
-
+            _source.GenerateImpulse();
         }
     }
 }
