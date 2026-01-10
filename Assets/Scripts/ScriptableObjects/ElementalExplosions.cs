@@ -1,9 +1,10 @@
 using UnityEngine;
 
+[System.Serializable]
 public struct ElementExplosionPair
 {
-    public ElementType Element;
-    public GameObject ExplosionObject;
+    public ElementType element;
+    public GameObject explosionObject;
 }
 
 // Data type which holds a list of explosion objects related to the "Element" enum
@@ -11,7 +12,7 @@ public struct ElementExplosionPair
 public class ElementalExplosions : ScriptableObject
 {
     // Dictionary lookup used to find material
-    [SerializeField] public ElementExplosionPair[] ElementExplosions;
+    [SerializeField] public ElementExplosionPair[] elementExplosions;
     
     // Simple singleton-style access with a lazy load
     public const string ResourcePath = "ElementalExplosionsDB"; // or "Configs/ElementalExplosionsDB"
