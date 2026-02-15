@@ -46,12 +46,8 @@ public class PickUpObject : MonoBehaviour, IGrabbable
 
     public void OnGrab(Transform holder)
     {
-        // Set rigid body to be kinematic and disable gravity
-        _rb.isKinematic = true;
-        _rb.useGravity = false;
-
-        // set collision enabled to be false
-        _col.enabled = false;
+        // Disable physics upon pickup
+        EnablePhysics(false);
 
         // Set transform parent to be the holder
         transform.SetParent(holder, worldPositionStays: false);
@@ -60,15 +56,31 @@ public class PickUpObject : MonoBehaviour, IGrabbable
         /*gameObject.layer = LayerMask.NameToLayer($"HeldItem");*/
     }
 
+    public void OnPropel(Transform holder)
+    {
+        EnablePhysics(true);
+        
+        // Set position to be holder's position
+        transform.position = holder.position;
+        
+        transform.SetParent(null, true);
+    }
+
+    private void EnablePhysics(bool bPhysics)
+    {
+        // Set whether rigid body is kinematic and gravity enabled
+        _rb.isKinematic = !bPhysics;
+        _rb.useGravity = bPhysics;
+
+        // Collision is only enabled if physics are enabled
+        _col.enabled = bPhysics;
+    }
+
     public void OnThrow(Vector3 throwDirection)
     {
-        // Set rigid body to be kinematic and disable gravity
-        _rb.isKinematic = false;
-        _rb.useGravity = true;
-
-        // set collision enabled to be false
-        _col.enabled = true;
-
+        // Enable physics upon throwing
+        EnablePhysics(true);
+        
         transform.SetParent(null, true);
         _rb.AddForce((throwDirection * throwHorizontalForce) + (Vector3.up * throwVerticalForce));
     }

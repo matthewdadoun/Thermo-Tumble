@@ -79,10 +79,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     [Header("Hold / Grab Tuning")]
     // Store the held grabbable object
-    private IGrabbable _heldGrabbable;
+    private GameObject _heldGrabbable;
 
     // The hold point for grabbable
     [SerializeField] GameObject holdPoint;
+
+    // The hold point for grabbable
+    [SerializeField] GameObject grabPropelPoint;
 
     // store elemental behavior
     private ElementalBehaviour _elementalBehaviour;
@@ -121,6 +124,16 @@ public class PlayerInputHandler : MonoBehaviour
     // Jump callback - hooked to "Jump" input action
     public void OnJump(InputAction.CallbackContext ctx)
     {
+        // If a grabbable is being held
+        if (ctx.started && !IsGrounded() && _heldGrabbable != null)
+        {
+            // Retrieve grabbable interface
+            var grabbableInterface = _heldGrabbable.GetComponent<IGrabbable>();
+            grabbableInterface?.OnPropel(grabPropelPoint.transform);
+
+            _heldGrabbable = null;
+        }
+
         // Callbacks for when jump started, performed, or canceled
         if (ctx.started || ctx.performed)
         {
@@ -153,7 +166,7 @@ public class PlayerInputHandler : MonoBehaviour
             // Set up kick trigger
             _animator.SetTrigger(animIDKick);
         }
-        
+
         // Store element type to lava
         _elementalBehaviour.SetElement(ElementType.Lava);
     }
@@ -166,8 +179,11 @@ public class PlayerInputHandler : MonoBehaviour
             // If we are holding onto a grabbable object
             if (_heldGrabbable != null)
             {
+                // Retrieve grabbable interface
+                var grabbableInterface = _heldGrabbable.GetComponent<IGrabbable>();
+
                 // Perform throw
-                _heldGrabbable.OnThrow(_lastInputDirection);
+                grabbableInterface?.OnThrow(_lastInputDirection);
                 _heldGrabbable = null;
                 return;
             }
@@ -184,13 +200,19 @@ public class PlayerInputHandler : MonoBehaviour
                 return;
             }
 
+            // Store hit object
+            var hitObject = hit.collider.gameObject;
+            
             // If grabbable, call OnGrab
-            var grabbable = hit.collider.gameObject.GetComponent<IGrabbable>();
+            var grabbable = hitObject.GetComponent<IGrabbable>();
             grabbable?.OnGrab(holdPoint.transform);
 
-            // Store the held grabbable
-            _heldGrabbable = grabbable;
-            /*_isHolding = true;*/
+            // If this item is grabbable, grab it
+            if (grabbable != null)
+            {
+                // Store the held grabbable
+                _heldGrabbable = hitObject;
+            }
         }
     }
 
