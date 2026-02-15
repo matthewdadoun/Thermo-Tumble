@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
             // Store scene
-            var scene = SceneData.Instance?.scenes[_sceneIndex];
+            var scene = SceneData.Instance?.SceneNames[_sceneIndex];
 
             // If the scene manager already has more than 1 scene, don't load the new scene
             if (SceneManager.sceneCount > 1)
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             }
             
             // Load the sub-scene
-            SceneManager.LoadScene(scene?.name, LoadSceneMode.Additive);
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
             return;
         }
         

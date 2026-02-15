@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneData
   scenes:
   - {fileID: 102900000, guid: 1489304a0f3502449bf6049597983bc1, type: 3}
+  sceneNames:
+  - FireIceLevel

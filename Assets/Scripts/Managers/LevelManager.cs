@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private string[] additiveScenes; // Additive levels
 
     private void Start()
     {
+        var additiveScenes = SceneData.Instance.SceneNames;
         // Iterate through additive scenes
         foreach (var scene in additiveScenes)
         {
