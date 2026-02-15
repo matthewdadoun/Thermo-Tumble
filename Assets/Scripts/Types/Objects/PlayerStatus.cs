@@ -6,7 +6,7 @@ public class PlayerStatus : DestructibleObject
     {
         if (IsOpposingElement(other))
         {
-            KillPlayer();
+            KillPlayer(true);
         }
 
         base.ReactTo(other);
