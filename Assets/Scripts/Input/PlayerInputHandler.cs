@@ -35,6 +35,9 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string animIDPunch = "Punch";
     [SerializeField] private string animIDKick = "Kick";
 
+    // The interpolation speed to use when blending between movement
+    public float moveInterpBlendSpeed = 10.0f;
+
     // Whether the player is holding an object
     /*private bool _isHolding;*/
 
@@ -202,7 +205,7 @@ public class PlayerInputHandler : MonoBehaviour
 
             // Store hit object
             var hitObject = hit.collider.gameObject;
-            
+
             // If grabbable, call OnGrab
             var grabbable = hitObject.GetComponent<IGrabbable>();
             grabbable?.OnGrab(holdPoint.transform);
@@ -324,8 +327,11 @@ public class PlayerInputHandler : MonoBehaviour
             inputDirectionChanged = true;
         }
 
+        // Get previous speed
+        var prevSpeed = _animator.GetFloat(_animIDSpeed);
+
         // Update speed
-        _animator.SetFloat(_animIDSpeed, Mathf.Abs(_moveInput.x));
+        _animator.SetFloat(_animIDSpeed, Mathf.MoveTowards(prevSpeed, Mathf.Abs(_moveInput.x), Time.deltaTime * moveInterpBlendSpeed));
 
         // Update whether the input direction has changed
         if (inputDirectionChanged && _lastInputDirection.magnitude > 0f)
