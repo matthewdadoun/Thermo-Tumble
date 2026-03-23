@@ -656,6 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
   animIDPunch: Punch
   animIDKick: Kick
+  animIDFlip: Flip
   moveInterpBlendSpeed: 10
   groundTraceLen: 0.05
   pickUpTraceLen: 0.15

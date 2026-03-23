@@ -34,6 +34,7 @@ public class PlayerInputHandler : MonoBehaviour
     // Set up trigger IDs
     [SerializeField] private string animIDPunch = "Punch";
     [SerializeField] private string animIDKick = "Kick";
+    [SerializeField] private string animIDFlip = "Flip";
 
     // The interpolation speed to use when blending between movement
     public float moveInterpBlendSpeed = 10.0f;
@@ -134,6 +135,12 @@ public class PlayerInputHandler : MonoBehaviour
             var grabbableInterface = _heldGrabbable.GetComponent<IGrabbable>();
             grabbableInterface?.OnPropel(grabPropelPoint.transform);
 
+            if (ctx.started || ctx.performed)
+            {
+                // Set up the punch trigger
+                _animator.SetTrigger(animIDFlip);
+            }
+
             _heldGrabbable = null;
         }
 
@@ -157,8 +164,8 @@ public class PlayerInputHandler : MonoBehaviour
         //    // Set up the punch trigger
         //    _animator.SetTrigger(animIDPunch);
         //}
-        
-        
+
+
         ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Ice, gameObject);
 
         // Store element type to ice
@@ -173,7 +180,7 @@ public class PlayerInputHandler : MonoBehaviour
         //    _animator.SetTrigger(animIDKick);
         //}
 
-        
+
         ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Lava, gameObject);
 
         // Store element type to lava
