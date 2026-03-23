@@ -157,6 +157,9 @@ public class PlayerInputHandler : MonoBehaviour
         //    // Set up the punch trigger
         //    _animator.SetTrigger(animIDPunch);
         //}
+        
+        
+        ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Ice, gameObject);
 
         // Store element type to ice
         _elementalBehaviour.SetElement(ElementType.Ice);
@@ -169,6 +172,9 @@ public class PlayerInputHandler : MonoBehaviour
         //    // Set up kick trigger
         //    _animator.SetTrigger(animIDKick);
         //}
+
+        
+        ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Lava, gameObject);
 
         // Store element type to lava
         _elementalBehaviour.SetElement(ElementType.Lava);
