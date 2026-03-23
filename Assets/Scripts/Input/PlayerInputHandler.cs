@@ -152,11 +152,11 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPunch(InputAction.CallbackContext ctx)
     {
-        if (ctx.started || ctx.performed)
-        {
-            // Set up the punch trigger
-            _animator.SetTrigger(animIDPunch);
-        }
+        //if (ctx.started || ctx.performed)
+        //{
+        //    // Set up the punch trigger
+        //    _animator.SetTrigger(animIDPunch);
+        //}
 
         // Store element type to ice
         _elementalBehaviour.SetElement(ElementType.Ice);
@@ -164,11 +164,11 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnKick(InputAction.CallbackContext ctx)
     {
-        if (ctx.started || ctx.performed)
-        {
-            // Set up kick trigger
-            _animator.SetTrigger(animIDKick);
-        }
+        //if (ctx.started || ctx.performed)
+        //{
+        //    // Set up kick trigger
+        //    _animator.SetTrigger(animIDKick);
+        //}
 
         // Store element type to lava
         _elementalBehaviour.SetElement(ElementType.Lava);
