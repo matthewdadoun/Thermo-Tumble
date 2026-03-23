@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 356991233545338993}
   - component: {fileID: 1002947619646746981}
   - component: {fileID: 8222465585511594936}
+  - component: {fileID: 4402381561468796856}
   m_Layer: 0
   m_Name: DestructibleCube
   m_TagString: Untagged
@@ -148,3 +149,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4402381561468796856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469326011522661338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7140df7d2bdfcd042a4e5244729a6ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotatingPlatform
+  bRotatePlatform: 0
+  speed: 1
