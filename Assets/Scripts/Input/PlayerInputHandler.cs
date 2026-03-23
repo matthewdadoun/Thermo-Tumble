@@ -32,8 +32,8 @@ public class PlayerInputHandler : MonoBehaviour
     private int _animIDGrounded;
 
     // Set up trigger IDs
-    [SerializeField] private string animIDPunch = "Punch";
-    [SerializeField] private string animIDKick = "Kick";
+    //[SerializeField] private string animIDPunch = "Punch";
+    //[SerializeField] private string animIDKick = "Kick";
     [SerializeField] private string animIDFlip = "Flip";
 
     // The interpolation speed to use when blending between movement
@@ -135,11 +135,11 @@ public class PlayerInputHandler : MonoBehaviour
             var grabbableInterface = _heldGrabbable.GetComponent<IGrabbable>();
             grabbableInterface?.OnPropel(grabPropelPoint.transform);
 
-            if (ctx.started || ctx.performed)
-            {
-                // Set up the punch trigger
-                _animator.SetTrigger(animIDFlip);
-            }
+            //if (ctx.started || ctx.performed)
+            //{
+            // Set up the punch trigger
+            _animator.SetTrigger(animIDFlip);
+            // }
 
             _heldGrabbable = null;
         }
