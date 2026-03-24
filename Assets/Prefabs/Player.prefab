@@ -737,7 +737,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2706930893425424931}
         m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: OnPunch
+        m_MethodName: OnSwapElement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

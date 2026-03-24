@@ -159,19 +159,26 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    public void OnPunch(InputAction.CallbackContext ctx)
+    public void OnSwapElement(InputAction.CallbackContext ctx)
     {
         //if (ctx.started || ctx.performed)
         //{
         //    // Set up the punch trigger
         //    _animator.SetTrigger(animIDPunch);
         //}
+        // if context started
+        if (ctx.started)
+        {
+            var newElementType = _elementalBehaviour.Element == ElementType.Ice ? ElementType.Lava : ElementType.Ice;
 
 
-        ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Ice, gameObject);
+            // Spawn elemental instance
+            ElementalExplosions.Instance.SpawnInstanceAttached(newElementType, gameObject);
 
-        // Store element type to ice
-        _elementalBehaviour.SetElement(ElementType.Ice);
+
+            // Store element type to ice
+            _elementalBehaviour.SetElement(newElementType);
+        }
     }
 
     public void OnKick(InputAction.CallbackContext ctx)
@@ -183,10 +190,10 @@ public class PlayerInputHandler : MonoBehaviour
         //}
 
 
-        ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Lava, gameObject);
-
-        // Store element type to lava
-        _elementalBehaviour.SetElement(ElementType.Lava);
+        //ElementalExplosions.Instance.SpawnInstanceAttached(ElementType.Lava, gameObject);
+//
+        //// Store element type to lava
+        //_elementalBehaviour.SetElement(ElementType.Lava);
     }
 
 
