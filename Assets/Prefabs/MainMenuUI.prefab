@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9bb5e074e8a94439875b9adaaaf424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
+  initialFocus: {fileID: 5111662272898061076}
 --- !u!1 &5111662272898061076
 GameObject:
   m_ObjectHideFlags: 0
