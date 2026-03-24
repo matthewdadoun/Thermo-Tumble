@@ -162,4 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotatingPlatform
   bRotatePlatform: 0
+  rotateOppositeDirection: 0
   speed: 1
