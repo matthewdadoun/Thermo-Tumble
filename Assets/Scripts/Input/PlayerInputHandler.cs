@@ -134,10 +134,15 @@ public class PlayerInputHandler : MonoBehaviour
             // Retrieve grabbable interface
             var grabbableInterface = _heldGrabbable.GetComponent<IGrabbable>();
             grabbableInterface?.OnPropel(grabPropelPoint.transform);
-            
+
             // Set up the punch trigger
             _animator.Play(animIDFlip, 0, 0);
 
+            // set is no longer held
+            var destructibleObject = _heldGrabbable.GetComponent<DestructibleObject>();
+            destructibleObject?.SetIsHeld(false);
+
+            // finally, null out held grabbable
             _heldGrabbable = null;
         }
 
@@ -219,6 +224,9 @@ public class PlayerInputHandler : MonoBehaviour
             // If grabbable, call OnGrab
             var grabbable = hitObject.GetComponent<IGrabbable>();
             grabbable?.OnGrab(holdPoint.transform);
+
+            var destructibleObject = hitObject.GetComponent<DestructibleObject>();
+            destructibleObject.SetIsHeld(true);
 
             // If this item is grabbable, grab it
             if (grabbable != null)
@@ -409,4 +417,10 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public Vector2 GetMoveInput() => _moveInput;
+
+    public bool IsHoldingGrabbable()
+    {
+        // Return whether we are holding a grabbable object
+        return _heldGrabbable != null;
+    }
 }

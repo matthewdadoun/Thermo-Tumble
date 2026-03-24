@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DestructibleObject : ElementalBehaviour, IDestructible
 {
+    private bool _bIsHeld = false;
+
     public void OnDestructibleOverlap(GameObject destroyer)
     {
         // If destroyer is valid
@@ -20,6 +22,26 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
             return;
         }
 
+        // Try to retrieve player status
+        var playerStatus = other.gameObject.GetComponent<PlayerStatus>();
+        if (_bIsHeld && playerStatus != null)
+        {
+            return;
+        }
+
+        // Retrieve player input handler
+        var playerInputHandler = gameObject.GetComponent<PlayerInputHandler>();
+        
+        // Check to see if player input handler is null
+        if (playerInputHandler != null)
+        {
+            // If this input handler is holding a grabbable, don't react to this object
+            if (playerInputHandler.IsHoldingGrabbable())
+            {
+                return;
+            }
+        }
+
         // Have both objects react to each other
         elementalBehaviour.ReactTo(element);
         ReactTo(elementalBehaviour.Element);
@@ -30,7 +52,7 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
         if (IsOpposingElement(other))
         {
             var explosionInstance = ElementalExplosions.Instance;
-            
+
             // Check to see which explosion to use
             foreach (var elementExplosion in explosionInstance.elementExplosions)
             {
@@ -41,7 +63,14 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
                     break;
                 }
             }
+
             Destroy(gameObject);
         }
+    }
+
+    public void SetIsHeld(bool bHeld)
+    {
+        // Set held state
+        _bIsHeld = bHeld;
     }
 }
