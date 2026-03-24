@@ -6,10 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a5105eca94384894f8b36fe0c7198c29
+  - enabled: 1
     path: Assets/Scenes/PersistentPlayerScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/FireIceLevel.unity
     guid: 1489304a0f3502449bf6049597983bc1
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0
