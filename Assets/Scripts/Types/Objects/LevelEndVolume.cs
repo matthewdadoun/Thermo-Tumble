@@ -1,0 +1,36 @@
+using System;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+
+public class LevelEndVolume : MonoBehaviour
+{
+    public string mainMenuScene;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var fadeInstance = GameManager.Instance.FadeControllerInstance;
+
+        // Retrieve game manager instance / set up binding
+        fadeInstance.OnFadeComplete += OnDeathFadeComplete;
+
+        // Fade out to black
+        fadeInstance.FadeOutToBlack(3f);
+
+        // OnDestroyFadeComplete
+        void OnDeathFadeComplete()
+        {
+            // Unbind event
+            GameManager.Instance.FadeControllerInstance.OnFadeComplete -= OnDeathFadeComplete;
+
+            // Reload the active scene
+            SceneManager.LoadScene(mainMenuScene);
+        }
+    }
+}
