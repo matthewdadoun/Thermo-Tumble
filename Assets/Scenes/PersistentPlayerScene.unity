@@ -1283,6 +1283,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3187724532008561214, guid: ed1d884528afa8c448a0c528be98252d, type: 3}
+      propertyPath: sfxFail
+      value: 
+      objectReference: {fileID: 8300000, guid: 00d8cc0aea39e8747812ab8b14014452, type: 3}
+    - target: {fileID: 3187724532008561214, guid: ed1d884528afa8c448a0c528be98252d, type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 1973219631}
     - target: {fileID: 5681909313277751163, guid: ed1d884528afa8c448a0c528be98252d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.02506
