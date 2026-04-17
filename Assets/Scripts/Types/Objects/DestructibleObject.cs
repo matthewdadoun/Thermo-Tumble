@@ -62,6 +62,19 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
                     Instantiate(elementExplosion.explosionObject, transform.position, Quaternion.identity);
                     break;
                 }
+
+                // Retrieve sound manager
+                var sm = SoundManager.Instance;
+
+                // If sound manager is null, 
+                if (sm == null)
+                {
+                    continue;
+                }
+                
+                // Play the correct sound
+                var sound = Element == ElementType.Lava ? sm.sfxFire : sm.sfxIce;
+                sm.PlaySfx(sound, 0.25f);
             }
 
             Destroy(gameObject);
