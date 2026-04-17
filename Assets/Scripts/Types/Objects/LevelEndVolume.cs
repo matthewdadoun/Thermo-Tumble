@@ -15,11 +15,6 @@ public class LevelEndVolume : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
-
         var fadeInstance = GameManager.Instance.FadeControllerInstance;
 
         // Retrieve game manager instance / set up binding
