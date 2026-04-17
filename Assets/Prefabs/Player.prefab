@@ -672,6 +672,8 @@ MonoBehaviour:
   jumpBuffer: 0.05
   holdPoint: {fileID: 6242768911082211762}
   grabPropelPoint: {fileID: 4612235561842947751}
+  switchFormsAudio: {fileID: 8300000, guid: a746f7c9010455f49b6f2e2a9e5a6ea5, type: 3}
+  boingAudio: {fileID: 8300000, guid: 5581302064c3e424e9ea2062b6c57208, type: 3}
 --- !u!114 &832110999971551674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,22 +751,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b58ab650-724e-444b-8f99-da6d3cb01bf5
     m_ActionName: 'Player/Punch[/Keyboard/l]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2706930893425424931}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: OnKick
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ba768a96-b65c-488d-a610-39b0f1a19466
-    m_ActionName: 'Player/Kick[/Keyboard/k]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player

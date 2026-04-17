@@ -93,7 +93,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     // store elemental behavior
     private ElementalBehaviour _elementalBehaviour;
-
+    
+    // The hold point for grabbable
+    [SerializeField] private AudioClip switchFormsAudio;
+    [SerializeField] private AudioClip boingAudio;
 
     void Awake()
     {
@@ -137,6 +140,9 @@ public class PlayerInputHandler : MonoBehaviour
 
             // Set up the punch trigger
             _animator.Play(animIDFlip, 0, 0);
+            
+            // Play the "boing" audio
+            SoundManager.Instance.PlaySfx(boingAudio, 3.0f);
 
             // set is no longer held
             var destructibleObject = _heldGrabbable.GetComponent<DestructibleObject>();
@@ -178,6 +184,8 @@ public class PlayerInputHandler : MonoBehaviour
 
             // Store element type to ice
             _elementalBehaviour.SetElement(newElementType);
+            
+            SoundManager.Instance.PlaySfx(switchFormsAudio);
         }
     }
 
