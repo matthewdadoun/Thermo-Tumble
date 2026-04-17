@@ -77,6 +77,18 @@ public class DestructibleObject : ElementalBehaviour, IDestructible
                 sm.PlaySfx(sound, 0.25f);
             }
 
+            // Retrieve player input handler
+            var playerInputHandler = gameObject.GetComponent<PlayerInputHandler>();
+        
+            // Check to see if player input handler is null
+            if (playerInputHandler != null)
+            {
+                // Stop music
+                SoundManager.Instance.StopMusic();
+                SoundManager.Instance.PlaySfx(SoundManager.Instance.sfxFail);
+            }
+       
+            
             Destroy(gameObject);
         }
     }
