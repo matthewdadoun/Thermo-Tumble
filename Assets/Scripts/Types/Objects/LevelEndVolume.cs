@@ -15,22 +15,27 @@ public class LevelEndVolume : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+
         var fadeInstance = GameManager.Instance.FadeControllerInstance;
 
         // Retrieve game manager instance / set up binding
-        fadeInstance.OnFadeComplete += OnDeathFadeComplete;
+        fadeInstance.OnFadeComplete += OnLevelFadeComplete;
 
         // Fade out to black
         fadeInstance.FadeOutToBlack(3f);
-        
+
         SoundManager.Instance.StopMusic();
         SoundManager.Instance.PlaySfx(SoundManager.Instance.sfxWin);
 
         // OnDestroyFadeComplete
-        void OnDeathFadeComplete()
+        void OnLevelFadeComplete()
         {
             // Unbind event
-            GameManager.Instance.FadeControllerInstance.OnFadeComplete -= OnDeathFadeComplete;
+            GameManager.Instance.FadeControllerInstance.OnFadeComplete -= OnLevelFadeComplete;
 
             // Reload the active scene
             SceneManager.LoadScene(mainMenuScene);

@@ -7,7 +7,11 @@ public class DeathVolume : MonoBehaviour
     {
         // Retrieve player status component
         var playerStatus = other.gameObject.GetComponent<PlayerStatus>();
-        
+
+        if (!other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
         // Stop music
         SoundManager.Instance.StopMusic();
         SoundManager.Instance.PlaySfx(SoundManager.Instance.sfxFail);
