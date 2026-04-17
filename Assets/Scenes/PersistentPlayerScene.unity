@@ -1284,6 +1284,10 @@ PrefabInstance:
       value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 3187724532008561214, guid: ed1d884528afa8c448a0c528be98252d, type: 3}
+      propertyPath: sfxWin
+      value: 
+      objectReference: {fileID: 8300000, guid: 19dd86be96ceb34419972984b5bdf4bb, type: 3}
+    - target: {fileID: 3187724532008561214, guid: ed1d884528afa8c448a0c528be98252d, type: 3}
       propertyPath: sfxFail
       value: 
       objectReference: {fileID: 8300000, guid: 00d8cc0aea39e8747812ab8b14014452, type: 3}

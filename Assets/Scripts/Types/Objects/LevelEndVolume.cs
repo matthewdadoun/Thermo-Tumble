@@ -22,6 +22,9 @@ public class LevelEndVolume : MonoBehaviour
 
         // Fade out to black
         fadeInstance.FadeOutToBlack(3f);
+        
+        SoundManager.Instance.StopMusic();
+        SoundManager.Instance.PlaySfx(SoundManager.Instance.sfxWin);
 
         // OnDestroyFadeComplete
         void OnDeathFadeComplete()
