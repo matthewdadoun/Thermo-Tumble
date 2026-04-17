@@ -674,6 +674,7 @@ MonoBehaviour:
   grabPropelPoint: {fileID: 4612235561842947751}
   switchFormsAudio: {fileID: 8300000, guid: a746f7c9010455f49b6f2e2a9e5a6ea5, type: 3}
   boingAudio: {fileID: 8300000, guid: 5581302064c3e424e9ea2062b6c57208, type: 3}
+  throwAudio: {fileID: 8300000, guid: 1afbc14f303ddd2449da7e00bc035a86, type: 3}
 --- !u!114 &832110999971551674
 MonoBehaviour:
   m_ObjectHideFlags: 0
