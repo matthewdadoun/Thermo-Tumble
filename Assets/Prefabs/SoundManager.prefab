@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   sfxSource: {fileID: 863868365860321536}
+  sfxFire: {fileID: 8300000, guid: 547b551b51ff2854ba05c5fc01206a3e, type: 3}
+  sfxIce: {fileID: 8300000, guid: 703461a8bc03e064f9dfdddda0160504, type: 3}
 --- !u!82 &863868365860321536
 AudioSource:
   m_ObjectHideFlags: 0
