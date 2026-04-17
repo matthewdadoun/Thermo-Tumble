@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 public class TouchInputHandler : MonoBehaviour
 {
     // Canvas used for input
-    [SerializeField] private GameObject touchCanvas;
+    [SerializeField] private GameObject touchHUD;
 
     private void Awake()
     {
         var hasTouch = Touchscreen.current != null;
-        touchCanvas.SetActive(hasTouch);
+        touchHUD.SetActive(hasTouch);
     }
 }
